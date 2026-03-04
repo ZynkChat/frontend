@@ -1,0 +1,33 @@
+@import "@mantine/core/styles.layer.css";
+@import "@mantine/notifications/styles.css";
+@import "@mantine/carousel/styles.css";
+@import "@mantine/dates/styles.css";
+
+.html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --app-background-color: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  --app-home-header-height: 60px;
+
+  @mixin light-root {
+    --text-color: #4b575b;
+  }
+
+  @mixin dark-root {
+    --text-color: #4b575b;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  pointer-events: none;
+}
