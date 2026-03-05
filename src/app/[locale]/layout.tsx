@@ -15,8 +15,8 @@ export async function generateMetadata(props: {
   const i18n = await getDictionary((await props.params).locale)
 
   return {
-    title: i18n._("Quiz"),
-    description: i18n._("Quiz"),
+    title: i18n._("Zynk Chat"),
+    description: i18n._("Zynk Chat"),
   }
 }
 
@@ -34,13 +34,13 @@ export default async function RootLayout({
     <html lang={lang} {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript defaultColorScheme="light" />
-        <link rel="icon" href="/assets/favicon.svg" />
+        <link rel="icon" href="/logo.svg" />
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
       </head>
-      <body className={roboto.className}>
+      <body>
         <Providers colorScheme="auto" locale={lang} messages={i18n.messages}>
           {children}
         </Providers>

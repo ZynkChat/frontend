@@ -1,37 +1,36 @@
-import { DEFAULT_THEME, createTheme, virtualColor } from '@mantine/core'
-import { colors } from './colors'
-import { components } from './components'
-import { poppins, roboto } from './fonts'
+import { DEFAULT_THEME, createTheme, virtualColor } from "@mantine/core"
+import { colors } from "./colors"
+import { components } from "./components"
+import { inter } from "./fonts"
 
 export const theme = createTheme({
   breakpoints: {
-    xs: '30em',
-    sm: '48em',
-    md: '64em',
-    lg: '74em',
-    xl: '90em',
-    xxl: '100em',
+    xs: "30em",
+    sm: "48em",
+    md: "64em",
+    lg: "74em",
+    xl: "90em",
+    xxl: "100em",
   },
 
   autoContrast: true,
-  defaultRadius: 'sm',
-  cursorType: 'pointer',
-  fontFamily: roboto.style.fontFamily,
-  fontFamilyMonospace: roboto.style.fontFamily,
+  defaultRadius: "lg",
+  cursorType: "pointer",
+  fontFamily: inter.style.fontFamily,
+  fontFamilyMonospace: inter.style.fontFamily,
   headings: {
-    fontFamily: `${poppins.style.fontFamily}, ${DEFAULT_THEME.fontFamily}`,
-    fontWeight: '600',
+    fontFamily: `${inter.style.fontFamily}, ${DEFAULT_THEME.fontFamily}`,
+    fontWeight: "700",
   },
   components: { ...components },
-
-  white: '#ffffff',
-  black: '#4b575b',
-  primaryColor: 'primary',
+  white: "#f1f5f9",
+  black: "#4b575b",
+  primaryColor: "primary",
   colors: {
     primary: virtualColor({
-      name: 'primary',
-      light: 'baseGreen',
-      dark: 'appDark',
+      name: "primary",
+      light: "basePurple",
+      dark: "appDark",
     }),
     ...colors,
   },

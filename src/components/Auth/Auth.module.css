@@ -1,0 +1,10 @@
+.paperWrapper {
+    width: 100%;
+    max-width: 900px;
+    background-color: var(--bg-white);
+    overflow: hidden;
+
+    @media (max-width: $mantine-breakpoint-sm) {
+        max-width: 450px;
+    }
+}

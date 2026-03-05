@@ -1,14 +1,5 @@
-import {
-  Button,
-  Card,
-  Checkbox,
-  MultiSelect,
-  Radio,
-  Select,
-  Text,
-  Tooltip,
-} from '@mantine/core'
-import { IconChevronDown } from '@tabler/icons-react'
+import { Button, Paper, PasswordInput, TextInput } from "@mantine/core"
+import classes from "./Theme.module.css"
 
 export const components = {
   Button: Button.extend({
@@ -16,64 +7,32 @@ export const components = {
       fw: 500,
     },
   }),
-  Card: Card.extend({
+  Paper: Paper.extend({
     defaultProps: {
-      shadow: 'none',
-      bd: '1px solid secondary.1',
+      bg: "var(--bg-white)",
+      shadow: "md",
+      withBorder: true,
     },
   }),
-  Tooltip: Tooltip.extend({
+  TextInput: TextInput.extend({
+    classNames: {
+      root: classes.root,
+      label: classes.label,
+      input: classes.input,
+    },
     defaultProps: {
-      color: '#141f2f',
-      withArrow: true,
-      multiline: true,
-      maw: 250,
-      styles: {
-        tooltip: {
-          fontSize: 'var(--mantine-font-size-xs)',
-          padding: '12px',
-          lineHeight: 1.2,
-        },
-      },
+      size: "sm",
     },
   }),
-  Checkbox: Checkbox.extend({
-    defaultProps: {
-      size: 'xs',
-      styles: {
-        label: {
-          fontSize: 'var(--mantine-font-size-sm)',
-          paddingLeft: '0.5rem',
-        },
-      },
+  PasswordInput: PasswordInput.extend({
+    classNames: {
+      root: classes.root,
+      label: classes.label,
+      input: classes.input,
+      innerInput: classes.innerInput,
     },
-  }),
-  Radio: Radio.extend({
     defaultProps: {
-      size: 'xs',
-      styles: {
-        label: {
-          fontSize: 'var(--mantine-font-size-sm)',
-          paddingLeft: '0.5rem',
-        },
-      },
-    },
-  }),
-  Text: Text.extend({
-    defaultProps: {
-      color: 'var(--mantine-color-secondary-9)',
-    },
-  }),
-  Select: Select.extend({
-    defaultProps: {
-      rightSection: <IconChevronDown size={16} />,
-      rightSectionPointerEvents: 'none',
-    },
-  }),
-  MultiSelect: MultiSelect.extend({
-    defaultProps: {
-      rightSection: <IconChevronDown size={16} />,
-      rightSectionPointerEvents: 'none',
+      size: "sm",
     },
   }),
 }
