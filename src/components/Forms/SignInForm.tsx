@@ -29,19 +29,16 @@ export const SignInForm: React.FC = () => {
     },
   })
 
-  const handleSubmit = useCallback(
-    async (value: formSignInDataType) => {
-      console.log(value)
-    },
-    [i18n],
-  )
+  const handleSubmit = useCallback(async (value: formSignInDataType) => {
+    console.log(value)
+  }, [])
 
   return (
     <Form form={formSignIn} onSubmit={handleSubmit}>
       <Stack gap={25} py={15}>
         <TextInput
           label={i18n._("Username")}
-          placeholder={i18n._("sam")}
+          placeholder={i18n._("john")}
           key={formSignIn.key("username")}
           {...formSignIn.getInputProps("username")}
         />
@@ -52,7 +49,9 @@ export const SignInForm: React.FC = () => {
           {...formSignIn.getInputProps("password")}
         />
 
-        <Button type="submit">{i18n._("Sign In")}</Button>
+        <Button type="submit" disabled={!formSignIn.isDirty()}>
+          {i18n._("Sign In")}
+        </Button>
 
         <Text size="sm" ta="center">
           {i18n._("Don't have an account?")}{" "}
