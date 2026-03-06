@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
-import { useLingui } from "@lingui/react"
-import { Button, PasswordInput, Stack, Text, TextInput } from "@mantine/core"
-import { Form, useForm } from "@mantine/form"
-import Link from "next/link"
-import { useCallback } from "react"
+import { useLingui } from '@lingui/react'
+import { Button, PasswordInput, Stack, Text, TextInput } from '@mantine/core'
+import { Form, useForm } from '@mantine/form'
+import Link from 'next/link'
+import { useCallback } from 'react'
 
 type formSignInDataType = {
   username: string
@@ -15,17 +15,17 @@ export const SignInForm: React.FC = () => {
   const i18n = useLingui()
 
   const formSignIn = useForm<formSignInDataType>({
-    mode: "uncontrolled",
+    mode: 'uncontrolled',
     initialValues: {
-      username: "",
-      password: "",
+      username: '',
+      password: '',
     },
 
     validate: {
       username: (value) =>
-        value.length > 0 ? null : i18n._("Username is required"),
+        value.length > 0 ? null : i18n._('Username is required'),
       password: (value) =>
-        value.length > 0 ? null : i18n._("Password is required"),
+        value.length > 0 ? null : i18n._('Password is required'),
     },
   })
 
@@ -37,31 +37,31 @@ export const SignInForm: React.FC = () => {
     <Form form={formSignIn} onSubmit={handleSubmit}>
       <Stack gap={25} py={15}>
         <TextInput
-          label={i18n._("Username")}
-          placeholder={i18n._("john")}
-          key={formSignIn.key("username")}
-          {...formSignIn.getInputProps("username")}
+          label={i18n._('Username')}
+          placeholder={i18n._('john')}
+          key={formSignIn.key('username')}
+          {...formSignIn.getInputProps('username')}
         />
         <PasswordInput
-          label={i18n._("Password")}
+          label={i18n._('Password')}
           placeholder="*******"
-          key={formSignIn.key("password")}
-          {...formSignIn.getInputProps("password")}
+          key={formSignIn.key('password')}
+          {...formSignIn.getInputProps('password')}
         />
 
         <Button type="submit" disabled={!formSignIn.isDirty()}>
-          {i18n._("Sign In")}
+          {i18n._('Sign In')}
         </Button>
 
         <Text size="sm" ta="center">
-          {i18n._("Don't have an account?")}{" "}
+          {i18n._("Don't have an account?")}{' '}
           <Text
             component={Link}
             href="/auth/sign-up"
             c="primary"
             td="underline"
           >
-            {i18n._("Sign Up")}
+            {i18n._('Sign Up')}
           </Text>
         </Text>
       </Stack>
