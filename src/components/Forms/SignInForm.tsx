@@ -1,20 +1,19 @@
 'use client'
 
+import { useSignIn } from '@/stores/auth/hooks/useSignIn'
+import type { SignInPayload } from '@/types/auth'
 import { useLingui } from '@lingui/react'
 import { Button, PasswordInput, Stack, Text, TextInput } from '@mantine/core'
 import { Form, useForm } from '@mantine/form'
 import Link from 'next/link'
 import { useCallback } from 'react'
 
-type formSignInDataType = {
-  username: string
-  password: string
-}
-
 export const SignInForm: React.FC = () => {
   const i18n = useLingui()
 
-  const formSignIn = useForm<formSignInDataType>({
+  const { mutate, isPending } = useSignIn()
+
+  const formSignIn = useForm<SignInPayload>({
     mode: 'uncontrolled',
     initialValues: {
       username: '',
@@ -29,9 +28,10 @@ export const SignInForm: React.FC = () => {
     },
   })
 
-  const handleSubmit = useCallback(async (value: formSignInDataType) => {
-    console.log(value)
-  }, [])
+  const handleSubmit = useCallback(
+    (value: SignInPayload) => mutate(value),
+    [mutate],
+  )
 
   return (
     <Form form={formSignIn} onSubmit={handleSubmit}>
@@ -49,7 +49,11 @@ export const SignInForm: React.FC = () => {
           {...formSignIn.getInputProps('password')}
         />
 
-        <Button type="submit" disabled={!formSignIn.isDirty()}>
+        <Button
+          type="submit"
+          loading={isPending}
+          disabled={!formSignIn.isDirty()}
+        >
           {i18n._('Sign In')}
         </Button>
 

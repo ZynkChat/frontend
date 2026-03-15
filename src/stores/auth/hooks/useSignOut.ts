@@ -1,13 +1,18 @@
+'use client'
+
 import { authService } from '@/services/authService'
 import { useLingui } from '@lingui/react'
 import { notifications } from '@mantine/notifications'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import type { AxiosError } from 'axios'
+import { useRouter } from 'next/navigation'
 import { useAuthActions } from '../AuthProvider'
 
 export const useSignOut = () => {
   const i18n = useLingui()
-  const { clearAuth } = useAuthActions()
+  const router = useRouter()
   const queryClient = useQueryClient()
+  const { clearAuth } = useAuthActions()
 
   return useMutation({
     mutationFn: authService.signOut,
@@ -20,12 +25,15 @@ export const useSignOut = () => {
         message: i18n._('Logout successfully'),
         color: 'green',
       })
+      router.push('/auth/sign-in')
     },
-    onError: () =>
+    onError: (error: AxiosError<{ message: string }>) => {
       notifications.show({
         title: i18n._('Error'),
-        message: i18n._('Something went wrong'),
+        message:
+          error.response?.data?.message ?? i18n._('Something went wrong'),
         color: 'red',
-      }),
+      })
+    },
   })
 }

@@ -13,12 +13,10 @@ import {
 } from '@mantine/core'
 import { Form, useForm } from '@mantine/form'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useCallback } from 'react'
 
 export const SignUpForm: React.FC = () => {
   const i18n = useLingui()
-  const router = useRouter()
   const { mutate, isPending } = useSignUp()
 
   const formSignUp = useForm<SignUpPayload>({
@@ -51,11 +49,9 @@ export const SignUpForm: React.FC = () => {
 
   const handleSubmit = useCallback(
     (value: SignUpPayload) => {
-      mutate(value, {
-        onSuccess: () => router.push('/auth/sign-in'),
-      })
+      mutate(value)
     },
-    [mutate, router],
+    [mutate],
   )
 
   return (

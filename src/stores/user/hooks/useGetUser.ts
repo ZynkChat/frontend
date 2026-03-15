@@ -13,5 +13,6 @@ export const useGetUser = () => {
       return user
     },
     retry: false,
+    enabled: false,
   })
 }

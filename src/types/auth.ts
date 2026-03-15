@@ -1,5 +1,3 @@
-import type { IUser } from './user'
-
 export type SignUpPayload = {
   username: string
   password: string
@@ -15,9 +13,5 @@ export type SignInPayload = {
 
 export type SignInResponse = {
   accessToken: string
-  user: IUser
-}
-
-export type SignUpResponse = {
-  user: IUser
+  message: string
 }

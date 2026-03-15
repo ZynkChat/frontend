@@ -33,3 +33,5 @@ export const createAuthStore = (initState: IAuth = initAuthState) => {
     },
   }))
 }
+
+export const authStore = createAuthStore()
